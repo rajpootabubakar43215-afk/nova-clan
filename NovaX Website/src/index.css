@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 12 90% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 12 85% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 18%;
+    --ring: 12 90% 55%;
+
+    --radius: 0.75rem;
+
+    --gradient-primary: linear-gradient(135deg, hsl(12 90% 55%), hsl(25 95% 50%));
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 7%), hsl(0 0% 10%));
+    --gradient-radial: radial-gradient(circle at top, hsl(12 90% 55% / 0.2), transparent 70%);
+    --shadow-glow: 0 0 40px hsl(12 90% 55% / 0.3);
+    --shadow-strong: 0 10px 40px -10px hsl(0 0% 0% / 0.6);
+    --shadow-intense: 0 0 60px hsl(12 90% 55% / 0.5), 0 0 100px hsl(12 90% 55% / 0.3);
+    
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+}
+
+@layer components {
+  .text-glow {
+    text-shadow: 0 0 20px hsl(12 90% 55% / 0.5);
+  }
+  
+  .text-glow-intense {
+    text-shadow: 0 0 30px hsl(12 90% 55% / 0.8), 0 0 50px hsl(12 90% 55% / 0.4);
+  }
+  
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .bg-gradient-radial {
+    background: var(--gradient-radial);
+  }
+  
+  .border-glow {
+    box-shadow: 0 0 20px hsl(12 90% 55% / 0.3);
+  }
+  
+  .border-glow-intense {
+    box-shadow: var(--shadow-intense);
+  }
+  
+  .card-hover {
+    transition: var(--transition-smooth);
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-intense);
+  }
+  
+  .stat-card {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(12 90% 55% / 0.1), transparent);
+    transition: left 0.5s;
+  }
+  
+  .stat-card:hover::before {
+    left: 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
